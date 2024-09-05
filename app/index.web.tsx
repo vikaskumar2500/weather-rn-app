@@ -11,7 +11,7 @@ import ToggleTemp from "@/components/ToggleTemp";
 import { tempConvToF } from "@/services/tempConvToF";
 import ErrorPage from "@/components/ErrorPage";
 
-export interface WeatherData {
+export interface WeatherData { 
   name: string;
   temp: number;
   description: string;

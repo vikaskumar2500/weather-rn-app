@@ -62,7 +62,7 @@ export const SearchedList = ({ data, isLoading }: SearchedListProps) => {
                 router.replace({
                   pathname: "/",
                   params: {
-                    name: item.name.trim().split(/[ ,?]/)[0],
+                    name: item.name.trim(),
                     state: item.state,
                   },
                 })
