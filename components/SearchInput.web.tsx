@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   TextInput,
-  StatusBar,
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "expo-router";
@@ -27,6 +26,7 @@ interface SearchInputProps {
 }
 
 const SearchInput = ({ handleSearchedData, onLoading }: SearchInputProps) => {
+  const [focus, setFocus] = useState(false);
   const { goBack } = useNavigation();
   const { register, handleSubmit, setValue, watch, resetField } =
     useForm<FieldValues>({
@@ -64,6 +64,7 @@ const SearchInput = ({ handleSearchedData, onLoading }: SearchInputProps) => {
       onLoading(false);
     }
   };
+
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.inputContainer}>
@@ -75,13 +76,14 @@ const SearchInput = ({ handleSearchedData, onLoading }: SearchInputProps) => {
           />
         </TouchableOpacity>
         <TextInput
+          onFocus={() => setFocus(true)}
           textContentType="addressCityAndState"
-          {...register("city")}
+          {...register("city", {onBlur:()=>setFocus(false)})}
           onChangeText={(val) => setValue("city", val)}
           keyboardType="name-phone-pad"
           placeholder="Search by your city..."
           placeholderTextColor={"whitesmoke"}
-          style={styles.input}
+          style={[styles.input, focus && styles.focus]}
           value={watch("city") || ""}
           onSubmitEditing={handleSubmit(onSubmit)}
           returnKeyType="search"
@@ -101,7 +103,7 @@ const SearchInput = ({ handleSearchedData, onLoading }: SearchInputProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
+    paddingTop: 10,
     backgroundColor: "#737373",
   },
   inputContainer: {
@@ -119,6 +121,8 @@ const styles = StyleSheet.create({
     color: "whitesmoke",
     fontSize: 18,
     fontWeight: "700",
+    borderWidth: 0,
+    padding: 10,
   },
   backButton: {
     position: "absolute",
@@ -131,6 +135,11 @@ const styles = StyleSheet.create({
     top: 17,
     right: 12,
     zIndex: 10,
+  },
+  focus: {
+    borderColor: "transparent",
+    borderWidth: 0,
+    outlineStyle: "none",
   },
 });
 

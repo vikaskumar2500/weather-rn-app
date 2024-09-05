@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React, { useState } from "react";
 import { ThemedView } from "@/components/ThemedView";
 import SearchInput from "@/components/SearchInput";
@@ -18,28 +18,31 @@ const SearchModal = () => {
     setSearchedData(() => data);
   const handleLoadiing = (loading: boolean) => setLoading(loading);
   return (
-    <ThemedView style={styels.container}>
-      <SearchInput
-        handleSearchedData={handleSearchedData}
-        onLoading={handleLoadiing}
-      />
-      <ThemedView
-        style={{
-          backgroundColor: "#404040",
-          minHeight:"100%",
-          paddingBottom:30,
-        }}
-      >
-        <SearchedList isLoading={isLoading} data={searchedData || []} />
+    <>
+      <StatusBar backgroundColor={"#94A3B8"} />
+      <ThemedView style={styels.container}>
+        <SearchInput
+          handleSearchedData={handleSearchedData}
+          onLoading={handleLoadiing}
+        />
+        <ThemedView
+          style={{
+            backgroundColor: "#404040",
+            minHeight: "100%",
+            paddingBottom: 30,
+          }}
+        >
+          <SearchedList isLoading={isLoading} data={searchedData || []} />
+        </ThemedView>
       </ThemedView>
-    </ThemedView>
+    </>
   );
 };
 const styels = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     width: "100%",
-    minHeight:'100%'
+    minHeight: "100%",
   },
 });
 

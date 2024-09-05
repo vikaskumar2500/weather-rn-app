@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image } from "react-native";
 import React, { useCallback, useMemo } from "react";
 import { ForecastData } from "@/app/index.web";
-import { ForecastList } from "./ForecastList";
+import { ForecastList } from "./ForecastList.web";
 
 
 interface DailyForecastProps {
@@ -26,7 +26,7 @@ const DailyForecast = ({ data, isToggled }: DailyForecastProps) => {
   }, [data]);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingHorizontal:50, }}>
       <Text
         style={{
           color: "whitesmoke",

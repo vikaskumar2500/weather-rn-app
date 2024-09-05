@@ -18,6 +18,7 @@ export const ForecastList = ({ data, isToggled, title }: ForecastListProps) => {
         alignItems: "center",
         justifyContent: "space-between",
         gap: 10,
+        
       }}
     >
       <Text
@@ -46,11 +47,7 @@ export const ForecastList = ({ data, isToggled, title }: ForecastListProps) => {
             alignItems: "center",
             justifyContent: "space-between",
             padding: 5,
-            paddingHorizontal: 10,
-            shadowOffset: { height: 20, width: 20 },
-            shadowColor: "black",
-            shadowRadius: 20,
-            shadowOpacity: 0.5,
+            paddingHorizontal: 40,
             width: "100%",
           }}
         >

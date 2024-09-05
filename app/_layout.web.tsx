@@ -18,7 +18,6 @@ export default function RootLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -38,6 +37,10 @@ export default function RootLayout() {
             headerShown: false,
             contentStyle: {
               backgroundColor: "#71717A",
+              width: "40%",
+              display: "flex",
+              alignItems: "center",
+              marginHorizontal: "auto",
             },
           }}
         />
@@ -46,7 +49,12 @@ export default function RootLayout() {
           options={{
             headerShown: false,
             presentation: "fullScreenModal",
-            contentStyle: { maxWidth: 400 },
+            contentStyle: {
+              width: "40%",
+              display: "flex",
+              alignItems: "center",
+              marginHorizontal: "auto",
+            },
           }}
         />
         <Stack.Screen name="+not-found" />
